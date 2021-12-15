@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_15_000944) do
+ActiveRecord::Schema.define(version: 2021_12_15_010325) do
+
+  create_table "deaths", force: :cascade do |t|
+    t.integer "game_id"
+    t.string "cause"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "assassin_id"
+    t.integer "victim_id"
+    t.index ["assassin_id"], name: "index_deaths_on_assassin_id"
+    t.index ["game_id"], name: "index_deaths_on_game_id"
+    t.index ["victim_id"], name: "index_deaths_on_victim_id"
+  end
 
   create_table "games", force: :cascade do |t|
     t.string "name"
@@ -29,4 +41,6 @@ ActiveRecord::Schema.define(version: 2021_12_15_000944) do
     t.index ["game_id"], name: "index_players_on_game_id"
   end
 
+  add_foreign_key "deaths", "players", column: "assassin_id"
+  add_foreign_key "deaths", "players", column: "victim_id"
 end

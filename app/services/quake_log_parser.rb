@@ -35,8 +35,17 @@ class QuakeLogParser
       end
 
       if line.scan(/ ClientDisconnect/).length.positive? && in_game
-        game.players.where(code: line.split[2]).first.destroy
+        # game.players.where(code: line.split[2]).first.destroy
       end
+
+      if line.scan(/ Kill:/).length.positive? && in_game
+        assassin = game.players.where(code: line.split[2]).first if line.split[2] != "1022"
+        victim = game.players.where(code: line.split[3]).first
+
+        death = game.deaths.create(assassin_id: assassin&.id, victim_id: victim.id, cause: line.split.last)
+        death.save
+      end
+
 
       if line.scan(/ ShutdownGame:/).length.positive? && in_game
         in_game = false
