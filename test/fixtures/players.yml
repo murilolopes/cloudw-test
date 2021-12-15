@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Ângelo
+  status: 1
+
+two:
+  name: Scalone
+  status: 1

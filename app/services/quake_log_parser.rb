@@ -14,26 +14,45 @@ class QuakeLogParser
     shutdownGame = []
     lol = []
     serverLogs = []
+
+    game = {}
+    in_game = false
+
     log_file.each_with_index do |line, index|
-      kills << line if line.scan(/ Kill: /).length.positive?
-      items << line if line.scan(/ Item: /).length.positive?
-      exits << line if line.scan(/ Exit: /).length.positive?
-      scores << line if line.scan(/ score: /).length.positive?
-      initGame << line if line.scan(/ InitGame: /).length.positive?
-      shutdownGame << line if line.scan(/ ShutdownGame:/).length.positive?
-      lol << line if line.scan(/ ------------------------------------------------------------/).length.positive?
-      serverLogs << line if line.scan(/ Client/).length.positive?
+
+      if line.scan(/ InitGame: /).length.positive? && !in_game
+        in_game = true
+        game = Game.create(name: line.split("\\")[12])
+      end
+
+      if line.scan(/ ClientConnect/).length.positive? && in_game
+        Player.create(code: line.split[2], game_id: game.id)
+      end
+
+      if line.scan(/ ClientUserinfoChanged/).length.positive? && in_game
+        player = game.players.where(code: line.split[2]).first
+        player.update(name: line.split("\\")[1]) if !player.nil?
+      end
+
+      if line.scan(/ ClientDisconnect/).length.positive? && in_game
+        game.players.where(code: line.split[2]).first.destroy
+      end
+
+      if line.scan(/ ShutdownGame:/).length.positive? && in_game
+        in_game = false
+      end
+
+
+
+      # kills << line if line.scan(/ InitGame: /).length.positive?
+      # kills << line if line.scan(/ Kill: /).length.positive?
+      # items << line if line.scan(/ Item: /).length.positive?
+      # exits << line if line.scan(/ Exit: /).length.positive?
+      # scores << line if line.scan(/ score: /).length.positive?
+
+      # shutdownGame << line if line.scan(/ ShutdownGame:/).length.positive?
+      # lol << line if line.scan(/ ------------------------------------------------------------/).length.positive?
+      # serverLogs << line if line.scan(/ Client/).length.positive?
     end
-
-    puts "Kills: #{kills.size}"
-    puts "Items: #{items.size}"
-    puts "Exits: #{exits.size}"
-    puts "Scores: #{scores.size}"
-    puts "Init: #{initGame.size}"
-    puts "Shutdowns: #{shutdownGame.size}"
-    puts "Empty lines: #{lol.size}"
-    puts "Server logs: #{serverLogs.size}"
-    puts "Total: #{kills.size + items.size + exits.size + scores.size + initGame.size + shutdownGame.size + lol.size + serverLogs.size}"
   end
-
 end
