@@ -6,24 +6,11 @@ class QuakeLogParser
   end
 
   def call
-    kills = []
-    items = []
-    exits = []
-    scores = []
-    initGame = []
-    shutdownGame = []
-    lol = []
-    serverLogs = []
-
-    game = {}
-    in_game = false
-
     log_file.each_with_index do |line, index|
+      game = {}
+      in_game = false
 
-      if line.scan(/ InitGame: /).length.positive? && !in_game
-        in_game = true
-        game = Game.create(name: line.split("\\")[12])
-      end
+      init_game(game, in_game) if initing_game?(game, line, in_game)
 
       if line.scan(/ ClientConnect/).length.positive? && in_game
         Player.create(code: line.split[2], game_id: game.id)
@@ -50,18 +37,15 @@ class QuakeLogParser
       if line.scan(/ ShutdownGame:/).length.positive? && in_game
         in_game = false
       end
-
-
-
-      # kills << line if line.scan(/ InitGame: /).length.positive?
-      # kills << line if line.scan(/ Kill: /).length.positive?
-      # items << line if line.scan(/ Item: /).length.positive?
-      # exits << line if line.scan(/ Exit: /).length.positive?
-      # scores << line if line.scan(/ score: /).length.positive?
-
-      # shutdownGame << line if line.scan(/ ShutdownGame:/).length.positive?
-      # lol << line if line.scan(/ ------------------------------------------------------------/).length.positive?
-      # serverLogs << line if line.scan(/ Client/).length.positive?
     end
+  end
+
+  def init_game
+    in_game = true
+    game = Game.create(name: line.split("\\")[12])
+  end
+
+  def initing_game?(line, in_game)
+    line.scan(/ InitGame: /).length.positive? && !in_game
   end
 end
