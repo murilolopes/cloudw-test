@@ -16,7 +16,6 @@ NUMBER_OF_PROCESSORS = ENV['PN'].to_i.positive? ? ENV['PN'].to_i : :number_of_pr
 
 class ActiveSupport::TestCase
   parallelize(workers: NUMBER_OF_PROCESSORS)
-  fixtures :all
   FactoryBot.reload
   include FactoryBot::Syntax::Methods
 
