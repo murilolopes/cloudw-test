@@ -1,154 +1,96 @@
 {
   "Minitest": {
     "coverage": {
-      "/home/murilo/code/cloudwalk/cloud-quake/app/models/death.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/home/murilo/code/cloudwalk/cloud-quake/app/models/application_record.rb": {
-        "lines": [
-          1,
-          1,
-          null
-        ]
-      },
-      "/home/murilo/code/cloudwalk/cloud-quake/app/models/game.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null,
-          1,
-          null,
-          1,
-          0,
-          0,
-          0,
-          null,
-          null,
-          0,
-          null,
-          null,
-          1,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          1,
-          null,
-          1,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/home/murilo/code/cloudwalk/cloud-quake/app/models/player.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          1,
-          null
-        ]
-      },
       "/home/murilo/code/cloudwalk/cloud-quake/app/services/quake_log_parser.rb": {
         "lines": [
-          1,
-          1,
+          0,
+          0,
           null,
-          1,
-          11,
+          0,
+          0,
+          0,
           null,
+          0,
+          0,
+          0,
+          0,
+          0,
           null,
-          1,
-          11,
-          11,
-          11,
-          11,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
           null,
-          11,
-          62,
-          62,
-          62,
-          62,
-          62,
+          0,
+          0,
+          0,
           null,
+          0,
           null,
+          0,
+          0,
+          0,
+          0,
+          0,
           null,
-          1,
-          11,
+          0,
+          0,
+          0,
           null,
+          0,
+          0,
+          0,
           null,
-          1,
+          0,
+          0,
+          0,
           null,
-          1,
-          11,
-          11,
-          11,
+          0,
+          0,
+          0,
+          0,
           null,
+          0,
+          0,
+          0,
           null,
-          1,
-          62,
+          0,
+          0,
+          0,
           null,
+          0,
+          0,
           null,
-          1,
-          12,
+          0,
+          0,
+          0,
           null,
+          0,
+          0,
+          0,
           null,
-          1,
-          62,
+          0,
+          0,
+          0,
+          0,
+          0,
           null,
+          0,
+          0,
+          0,
           null,
-          1,
-          14,
-          14,
-          null,
-          null,
-          1,
-          62,
-          null,
-          null,
-          1,
-          9,
-          9,
-          null,
-          9,
-          null,
-          null,
-          1,
-          62,
-          null,
-          null,
-          1,
-          9,
-          null,
-          null,
-          1,
-          4,
-          4,
-          4,
-          null,
-          null,
-          1,
-          62,
-          null,
-          null,
-          1,
-          15,
-          15,
-          null,
-          null
-        ]
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
       },
       "/home/murilo/code/cloudwalk/cloud-quake/app/channels/application_cable/channel.rb": {
         "lines": [
@@ -191,6 +133,74 @@
         "branches": {
         }
       },
+      "/home/murilo/code/cloudwalk/cloud-quake/app/models/player.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/murilo/code/cloudwalk/cloud-quake/app/models/game.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/murilo/code/cloudwalk/cloud-quake/app/models/application_record.rb": {
+        "lines": [
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/murilo/code/cloudwalk/cloud-quake/app/models/death.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
       "/home/murilo/code/cloudwalk/cloud-quake/app/mailers/application_mailer.rb": {
         "lines": [
           0,
@@ -202,7 +212,7 @@
         }
       }
     },
-    "timestamp": 1639788630
+    "timestamp": 1639792471
   },
   "Unit Tests": {
     "coverage": {
