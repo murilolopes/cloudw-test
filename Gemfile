@@ -30,6 +30,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry'
   gem 'factory_bot_rails', '~> 6.2'
+  gem 'faker'
 end
 
 group :development do
