@@ -2,6 +2,8 @@ class Game < ApplicationRecord
   has_many :players
   has_many :deaths
 
+  validates :name, presence: true
+
   def report
     kills = []
 
